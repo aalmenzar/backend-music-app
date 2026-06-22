@@ -2,7 +2,7 @@
 
 Backend desarrollado con **Spring Boot** para una aplicación de reproducción musical estilo Spotify.
 
-La API gestiona usuarios, autenticación, canciones y subida de archivos multimedia, proporcionando los endpoints necesarios para que el cliente pueda interactuar con la aplicación.
+La API gestiona usuarios, autenticación, canciones y playlists, proporcionando los endpoints necesarios para que el cliente pueda interactuar con la aplicación.
 Tanto la base de datos PostgreSQL y el servicio están virtualizados mediante contenedores docker
 
 ---
