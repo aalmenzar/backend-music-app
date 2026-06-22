@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15.4-alpine
+    environment:
+      POSTGRES_USER: music
+      POSTGRES_PASSWORD: musicpass
+      POSTGRES_DB: musicdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/musicdb
+      SPRING_DATASOURCE_USERNAME: music
+      SPRING_DATASOURCE_PASSWORD: musicpass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SERVER_PORT: 9000
+    ports:
+      - "9000:9000"
+    volumes:
+      - media_data:/data/media
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  media_data:
